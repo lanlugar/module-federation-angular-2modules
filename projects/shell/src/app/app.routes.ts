@@ -5,6 +5,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const URL = 'http://localhost:3000/remoteEntry.js';
 
+
 export const APP_ROUTES: Routes = [
     {
       path: '',
@@ -22,6 +23,15 @@ export const APP_ROUTES: Routes = [
           exposedModule: './Module'
         })
         .then(m => m.FlightsModule) 
+    },
+    {
+      path: 'hotels',
+      loadChildren: () => loadRemoteModule({
+          type: 'module',
+          remoteEntry: URL,
+          exposedModule: './Module1'
+        })
+        .then(m => m.HotelsModule) 
     },
 
     {
